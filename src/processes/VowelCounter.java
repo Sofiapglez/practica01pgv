@@ -8,7 +8,7 @@ public class VowelCounter {
 
 
         for (int i = 0; i < text.length(); i++) {
-            if (character == text.charAt(i)) {
+            if (Character.toLowerCase(character) == Character.toLowerCase(text.charAt(i))) {
                  contador++;
             }
         }
