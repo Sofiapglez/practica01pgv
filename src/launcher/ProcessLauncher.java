@@ -3,29 +3,26 @@ package launcher;
 import java.io.File;
 import java.io.IOException;
 
-import java.io.File;
-import java.io.IOException;
-
 public class ProcessLauncher {
-    private static final String OUTPUT_DIRECTORY = "./outputs/";
+    private final static String OUTPUT_ROUTE = "./src/outputs/";
 
-    public static Process initVowelCounterProcess(char character, String fileName) {
+    public static Process initVowelCounter(String line, String fileName) {
         ProcessBuilder processBuilder = new ProcessBuilder(
-                "java", "VowelCounter", String.valueOf(character), fileName
+                "java", "./src/processes/VowelCounter.java", line
         );
 
-        processBuilder.directory(new File("src"));
-        processBuilder.redirectErrorStream(true);
+    Process javaProcess = null;
 
-        File outputFile = new File(OUTPUT_DIRECTORY + fileName + "_" + character + "_output.txt");
+    try {
+        File outputFile = new File(OUTPUT_ROUTE + fileName);
         processBuilder.redirectOutput(outputFile);
-
-        try {
-            return processBuilder.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        javaProcess =  processBuilder.start();
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
     }
-}
+    return javaProcess;
 
+    }
+
+}

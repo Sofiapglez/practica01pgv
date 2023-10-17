@@ -6,7 +6,6 @@ public class VowelCounter {
         String text = args[1];
         int contador = 0;
 
-
         for (int i = 0; i < text.length(); i++) {
             if (Character.toLowerCase(character) == Character.toLowerCase(text.charAt(i))) {
                  contador++;
